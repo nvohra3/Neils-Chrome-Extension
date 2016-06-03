@@ -1,0 +1,38 @@
+{
+  "manifest_version": 2,
+  "name": "Neil's Extension",
+  "description": "Allows user to open tab to right of current 
+    tab and \"emphasize\" a string he/she is typing.",
+  "version": "1.0",
+
+  "browser_action": {
+    "default_icon": "Me.png"
+  },
+
+  "commands": {
+    "open-tab-to-right": {
+      "suggested_key": {
+        "default": "Ctrl+E",
+        "mac": "Command+E"
+      },
+      "description": "Opens new tab to the right of the current tab"
+    }
+  },
+
+  "permissions": [
+    "activeTab"
+  ],
+
+  "background": {
+    "global": true,
+    "scripts": ["new_tab.js"],
+    "persistent": true
+  },
+
+  "content_scripts": [
+    {
+        "matches" : ["<all_urls>"],
+        "js": ["capitalize.js"]
+    }
+  ]
+}
